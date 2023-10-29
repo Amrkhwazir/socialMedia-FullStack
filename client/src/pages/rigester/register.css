@@ -1,4 +1,4 @@
-.login{
+.sign{
     width: 100vw;
     height: 100vh;
     background-color: rgb(234, 234, 234);
@@ -7,31 +7,31 @@
     justify-content: center;
 }
 
-.loginWrapper{
+.signWrapper{
     width: 70%;
     height: 70%;
     display: flex;
 }
 
-.loginLeft,.loginRight{
+.signLeft,.signRight{
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.loginLogo{
+.signLogo{
     font-size: 50px;
     font-weight: 800;
     color: #1775ee;
     margin-bottom: 10px;
 }
 
-.loginDesc{
+.signDesc{
     font-size: 24px;
 }
 
-.loginBox{
+.signBox{
     height: 450px;
     padding: 20px;
     background-color: white;
@@ -41,7 +41,7 @@
     justify-content: space-between;
 }
 
-.loginInput{
+.signInput{
     height: 50px;
     border-radius: 10px;
     border: 1px solid gray;
@@ -49,11 +49,11 @@
     padding-left: 20px;
 }
 
-.loginInput:focus{
+.signInput:focus{
     outline: none;
 }
 
-.loginButton{
+.signButton{
     height: 50px;
     border-radius: 10px;
     border: none;
@@ -64,12 +64,12 @@
     cursor: pointer;
 }
 
-.loginForgot{
+.signForgot{
     text-align: center;
     color: #1775ee;
 }
 
-.loginRegisterButton{
+.signRegisterButton{
     width: 60%;
     align-self: center;
     height: 50px;
