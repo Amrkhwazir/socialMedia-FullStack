@@ -46,14 +46,14 @@ export default function Register(){
                     </span>
                 </div>
                 <div className="signRight">
-                    <div className="signBox" onSubmit={signupHandler}>
+                    <form className="signBox" onSubmit={signupHandler}>
                         <input placeholder="Username" className="signInput" ref={username}  />
                         <input placeholder="Email" type="email" className="signInput" ref={email}/>
                         <input placeholder="Password" type="password" minLength="6"  className="signInput" ref={password}  />
                         <input placeholder="Password Again" type="password" className="signInput" ref={password} />
                         <button className="signButton" type="submit">Sign Up</button>
                         <button className="signRegisterButton">Log into Account</button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

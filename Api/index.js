@@ -6,7 +6,8 @@ import dotenv from 'dotenv';
 import authRoutes from "./routes/authRoutes.js";
 import profileRoutes from "./routes/profileRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
-import cors from "cors"
+import cors from "cors";
+import multer from "multer";
 
 const app = express();
 app.use(cors())
@@ -29,6 +30,25 @@ const connect = () => {
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
+
+const storage = multer.diskStorage({
+  destination:(req, file, cb)=>{
+    cb(null, "public/images");
+  },
+  filename: ( req, file, cb) => {
+    cb(null, req.body.name);
+  }
+});
+
+const upload = multer(storage);
+app.post("api/upload", upload.single("file"), (req,res) => {
+try {
+  return res.status(200).json("file uploaded successfully")
+} catch (error) {
+  console.log(error);
+}
+})
+
 
 app.use((req, res, next)=>{
     req.body.date = new Date()
