@@ -6,6 +6,12 @@
     padding: 20px 20px 0 0;
 }
 
+.rightbarFollowingName{
+    text-align: center;
+    list-style: none;
+    text-decoration: none !important;
+}
+
 .birthdayContainer{
 display: flex;
 align-items: center;

@@ -15,6 +15,7 @@
 .profileCoverImg{
     width: 100%;
     height: 250px;
+    /* border:  1px solid red; */
     object-fit: cover;
 }
 
@@ -35,14 +36,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
-.profileInfoName{
+.profileInfo .profileInfoName{
     font-size: 24px;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 
-.profileInfoDesc{
+.profileInfo .profileInfoDesc{
     font-weight: 300;
 }
 

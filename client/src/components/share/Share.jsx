@@ -26,7 +26,8 @@ export default function Share(){
             newPost.img = fileName
 
             try {
-                await axios.post("http://127.0.0.1:8000/upload", data)
+                await axios.post("http://127.0.0.1:8000/upload", data);
+                window.location.reload();
             } catch (err) {
                 console.log(err);
             }

@@ -1,9 +1,31 @@
 import "./rightbar.css";
-import { users } from "../../dummyData";
+import { users } from "../../dummyData.js";
+import { useContext, useEffect, useState } from "react";
+import axios, { Axios } from "axios";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext.js";
+import { Add } from "@mui/icons-material";
 
 
 export default function Rightbar({ user }){
+
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+    const [friend, setFriend] = useState([])
+    const {user: currentUser} = useContext(AuthContext);
+
+    useEffect(()=>{
+        const getFriends = async () => {
+            try {
+                const friendLists = await axios.get(`http://127.0.0.1:8000/profile/friends/${user._id}`);
+                setFriend(friendLists.data)
+                // console.log(friendLists);
+            } catch (error) {
+
+                console.log(error)
+            }
+        } 
+        getFriends();
+    }, [user._id])
     
     const HomeRightbar =()=>{
         return(
@@ -38,6 +60,11 @@ export default function Rightbar({ user }){
     const ProfileRightbar =()=>{
         return(
             <>
+            {user.name !== currentUser.name && (
+                <button className="rightBarFollowButton">
+                    Follow<Add/>
+                </button>
+            ) }
             <h4 className="rightbarTitle">User information</h4>
             <div className="rightbarInfo">
                 <div className="rightbarInfoItem">
@@ -55,30 +82,18 @@ export default function Rightbar({ user }){
             </div>
             <h4 className="rightbarTitle">User information</h4>
             <div className="rightbarFollowings">
-                <div className="rightbarFollowing">
-                    <img src={`${PF}profile/pp1.jpg`}alt="" className="rightbarFollowingImg" />
-                    <span className="rightbarFollowingName">John Doe</span>
+
+                {friend.map((friend, index)=>(
+                    <Link to={"/profile/"+friend.name}>
+                    <div key={index} className="rightbarFollowing">
+                    <img src={friend.profilePicture ? PF+friend.profilePicture : PF+"avatar.jpg"}alt="" className="rightbarFollowingImg" />
+                    <span className="rightbarFollowingName">
+                        {friend.name ? friend.name : "No Friends"}
+                        </span>
                 </div>
-                <div className="rightbarFollowing">
-                    <img src={`${PF}/profile/pp2.jpg`}alt="" className="rightbarFollowingImg" />
-                    <span className="rightbarFollowingName">John Doe</span>
-                </div>
-                <div className="rightbarFollowing">
-                    <img src={`${PF}/profile/pp3.webp`} alt="" className="rightbarFollowingImg" />
-                    <span className="rightbarFollowingName">John Doe</span>
-                </div>
-                <div className="rightbarFollowing">
-                    <img src={`${PF}/profile/pp4.jpeg`} alt="" className="rightbarFollowingImg" />
-                    <span className="rightbarFollowingName">John Doe</span>
-                </div>
-                <div className="rightbarFollowing">
-                    <img src={`${PF}/profile/pp4.webp`} alt="" className="rightbarFollowingImg" />
-                    <span className="rightbarFollowingName">John Doe</span>
-                </div>
-                <div className="rightbarFollowing">
-                    <img src={`${PF}/profile/pp5.jpeg`} alt="" className="rightbarFollowingImg" />
-                    <span className="rightbarFollowingName">John Doe</span>
-                </div>
+                    </Link>
+                ))}
+                
             </div>
             </>
 
@@ -88,7 +103,7 @@ export default function Rightbar({ user }){
     return(
         <div className="rightbar">
             <div className="rightbarWrapper">
-                {user ? <ProfileRightbar/> : <HomeRightbar/>}
+                { user ? <ProfileRightbar/> : <HomeRightbar/>}
             </div>
         </div>
     )

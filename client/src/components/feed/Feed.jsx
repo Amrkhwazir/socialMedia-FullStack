@@ -12,18 +12,23 @@ export default function Feed({username}){
 
     useEffect( ()=>{
         async function fetchPosts(){
-            const response = username ? await axios.get(`http://127.0.0.1:8000/post/profile/${username}`) 
+            const response = username 
+            ? await axios.get(`http://127.0.0.1:8000/post/profile/${username}`) 
             : await axios.get("http://127.0.0.1:8000/post/timeline/" + user._id)
-            setPosts(response?.data);
-            // console.log(response.data)
+            setPosts(response?.data?.sort((p1, p2) => (
+                new Date(p2.createdAt) - new Date(p1.createdAt)
+            )));
+            // console.log(response)
+        
+          
+            
         }
         fetchPosts()
     },[username, user._id])
-    console.log(posts)
     return(
         <div className="feed">
             <div className="feedWrapper">
-                <Share/>  
+                {username === user.name && <Share/> || <p style={{textAlign: "center", fontSize: "18px"}}>No posts</p>}  
                 {
                     posts?.map((p)=>(
                         <Post key={p?._id} post={p}/>

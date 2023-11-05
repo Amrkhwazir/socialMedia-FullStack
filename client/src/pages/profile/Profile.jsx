@@ -9,18 +9,20 @@ import { useParams } from "react-router-dom";
 
 
 
+
 export default function Profile(){
 
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const [user, setUser] = useState({});
     const username = useParams().username;
+    // console.log(username)
     
-
+    
     useEffect( ()=>{
         async function fetchUser(){
             const response = await axios.get(`http://127.0.0.1:8000/profile?username=${username}`)
             setUser(response.data)
-            console.log(response.data)
+            // console.log(response.data)
 
         }
         fetchUser()
@@ -34,8 +36,8 @@ export default function Profile(){
             <div className="profileRight">
                 <div className="profileRightTop">
                     <div className="profileCover">
-                        <img src={user.coverPicture || PF+"/coverpic.jpg"} alt="" className="profileCoverImg" />
-                        <img src={user.profilePicture || PF+"/profile/pp1.jpg"} alt="" className="profileUserImg" />
+                        <img src={user.coverPicture ? PF+user.coverPicture :  PF+"/coverpic.jpg"} alt="" className="profileCoverImg" />
+                        <img src={user.profilePicture ? PF+user.profilePicture : PF+"/profile/pp1.jpg"} alt="" className="profileUserImg" />
                     </div>
                     <div className="profileInfo">
                         <h4 className="profileInfoName">{user.name}</h4>

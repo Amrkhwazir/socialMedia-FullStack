@@ -66,6 +66,28 @@ export const deletePofile = async (req, res) => {
     }
    };
 
+// get a friends
+
+
+export const getFriends = async (req, res) => {
+try {
+    const user = await User.findById(req.params.userId);
+    const friends = await Promise.all(
+        user.following.map((friendId)=>(
+            User.findById(friendId)
+        ))
+    );
+    let friendList = [];
+    friends.map(friend => {
+        const {_id, name, profilePicture} = friend;
+        friendList.push({_id, name, profilePicture})
+    });
+    res.status(200).json(friendList);
+} catch (err) {
+    res.status(500).json(err)
+}
+}
+
 
 //    follow user
 export const followUser = async (req, res) => {
