@@ -94,7 +94,6 @@ export const getPost = async (req, res) => {
 
 export const timelinePosts = async (req, res) => {
     console.log("get a all post");
-    let postArray = [];
     try {
         const currentUser = await User.findById(req.params.userId);
         const userPost = await Post.find({userId: currentUser._id});

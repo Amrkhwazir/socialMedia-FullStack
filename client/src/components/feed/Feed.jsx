@@ -14,19 +14,20 @@ export default function Feed({username}){
         async function fetchPosts(){
             const response = username ? await axios.get(`http://127.0.0.1:8000/post/profile/${username}`) 
             : await axios.get("http://127.0.0.1:8000/post/timeline/" + user._id)
-            setPosts(response.data);
-            console.log(response.data)
+            setPosts(response?.data);
+            // console.log(response.data)
         }
         fetchPosts()
     },[username, user._id])
-
+    console.log(posts)
     return(
         <div className="feed">
             <div className="feedWrapper">
                 <Share/>  
                 {
-                posts.map((p)=>(
-                <Post key={p._id} post={p}/>))
+                    posts?.map((p)=>(
+                        <Post key={p?._id} post={p}/>
+                ))
                 }  
             </div>
         </div>

@@ -8,9 +8,9 @@ import { AuthContext } from "../../context/AuthContext";
 
 
 export default function Post({post}){
-    
+// console.log(post.img)    
 
-    const [like, setLike] = useState(post.likes.length)
+    const [like, setLike] = useState(post?.likes?.length)
     const [isLiked, setIsLiked] = useState(false)
     const [user, setUser] = useState({});
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -23,7 +23,7 @@ export default function Post({post}){
 
     useEffect( ()=>{
         async function fetchUser(){
-            const response = await axios.get(`http://127.0.0.1:8000/profile?userId=${post.userId}`)
+            const response = await axios.get(`http://127.0.0.1:8000/profile?userId=${post?.userId}`)
             setUser(response.data);
         }
         fetchUser()
@@ -32,7 +32,7 @@ export default function Post({post}){
 
     const likeHandler = ()=>{
         try {
-            axios.put(`http://127.0.0.1:8000/post/${post._id}/like`, {userId: currentUser._id})
+            axios.put(`http://127.0.0.1:8000/post/${post?._id}/like`, {userId: currentUser._id})
         } catch (error) {
             
         }

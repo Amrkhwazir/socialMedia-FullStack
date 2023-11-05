@@ -8,6 +8,11 @@ import profileRoutes from "./routes/profileRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
 import cors from "cors";
 import multer from "multer";
+import path from "path";
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 
 const app = express();
 app.use(cors())
@@ -26,9 +31,13 @@ const connect = () => {
       });
   };
 
+app.use("/images", express.static(path.join(__dirname, "public/images")))
+
 // middleware
 app.use(express.json());
-app.use(helmet());
+app.use(helmet({
+  crossOriginResourcePolicy: false,
+}));
 app.use(morgan("common"));
 
 const storage = multer.diskStorage({
@@ -36,16 +45,17 @@ const storage = multer.diskStorage({
     cb(null, "public/images");
   },
   filename: ( req, file, cb) => {
-    cb(null, req.body.name);
+    cb(null, file.originalname);
   }
 });
 
-const upload = multer(storage);
-app.post("api/upload", upload.single("file"), (req,res) => {
+const upload = multer({storage});
+
+app.post("/upload", upload.single("file"), (req,res) => {
 try {
   return res.status(200).json("file uploaded successfully")
 } catch (error) {
-  console.log(error);
+  console.log("data nhi mil rha");
 }
 })
 
