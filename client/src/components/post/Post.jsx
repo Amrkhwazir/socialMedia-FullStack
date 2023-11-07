@@ -7,8 +7,7 @@ import {Link} from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
 
-export default function Post({post}){
-// console.log(post.img)    
+export default function Post({post}){   
 
     const [like, setLike] = useState(post?.likes?.length)
     const [isLiked, setIsLiked] = useState(false)
@@ -57,12 +56,12 @@ export default function Post({post}){
             </div>
             <div className="postCenter">
                 <span className="postText">{post?.desc}</span>
-                <img src={PF+ post.img} crossOrigin="anonymous" alt="" className="postImg" />
+                <img src={PF+post.img} alt="" className="postImg" />
             </div>
             <div className="postBottom">
                 <div className="postBottomLeft">
-                    <img src="/assets/like.png" alt="" onClick={likeHandler} className="likeIcon" />
-                    <img src="/assets/heart.png" alt="" onClick={likeHandler} className="likeIcon" />
+                    <img src="/images/like.png" alt="" onClick={likeHandler} className="likeIcon" />
+                    <img src="/images/heart.png" alt="" onClick={likeHandler} className="likeIcon" />
                     <span className="postLikeCounter">{like} poeple like it</span>
                 </div>
                 <div className="postBottomRight">

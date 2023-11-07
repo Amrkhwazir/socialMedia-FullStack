@@ -13,7 +13,8 @@ export default function Register(){
     const navigate = useNavigate();
 
     const signupHandler = async (e) =>{
-        console.log(e)
+        e.preventDefault();
+        // console.log(e)
         if(passwordAgain.current.value !== password.current.value){
             alert("password not match")
         }else{
@@ -24,7 +25,8 @@ export default function Register(){
             }
             try {
             await axios.post("http://127.0.0.1:8000/auth/register", user);
-                navigate.push("/login")
+                navigate("/login");
+                // console.log(user)
 
             } catch (err) {
                 console.log(err)
@@ -48,9 +50,9 @@ export default function Register(){
                 <div className="signRight">
                     <form className="signBox" onSubmit={signupHandler}>
                         <input placeholder="Username" className="signInput" ref={username}  />
-                        <input placeholder="Email" type="email" className="signInput" ref={email}/>
-                        <input placeholder="Password" type="password" minLength="6"  className="signInput" ref={password}  />
-                        <input placeholder="Password Again" type="password" className="signInput" ref={password} />
+                        <input placeholder="Email" type="email" className="signInput" ref={email} required/>
+                        <input placeholder="Password" type="password" minLength="8"  className="signInput" ref={password}  required/>
+                        <input placeholder="Password Again" type="password" className="signInput" ref={passwordAgain}  required/>
                         <button className="signButton" type="submit">Sign Up</button>
                         <button className="signRegisterButton">Log into Account</button>
                     </form>

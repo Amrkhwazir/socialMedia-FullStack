@@ -6,7 +6,7 @@ import { users } from "../../dummyData.js";
 
 export default function Sidebar(){
 
-    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER
 
     return(
         <div className="sidebar">
@@ -51,6 +51,7 @@ export default function Sidebar(){
 
                     <>
                     {users.map((u, indx)=>(
+                        // console.log(u)
                         <li key={indx} className="sidebarFriend">
                         <img src={PF+u?.profilePic} alt="" className="sidebarFriendImg" />
                         <span className="sidebarFriendName">{u?.username}</span>

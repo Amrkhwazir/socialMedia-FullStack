@@ -1,4 +1,4 @@
-import { EmojiEmotions, Label, PermMedia, Room } from "@mui/icons-material";
+import { Cancel, EmojiEmotions, Label, PermMedia, Room } from "@mui/icons-material";
 import "./share.css";
 import { useContext, useRef, useState } from "react";
 import {AuthContext} from "../../context/AuthContext"
@@ -49,6 +49,12 @@ export default function Share(){
                 <input placeholder={"What's in your mind" + " " + user.name+ "?"} className="shareInput" ref={desc}/>
             </div>
                 <hr className="shareHr" />
+                {file && (
+                    <div className="shareImgContainer">
+                        <img src={URL.createObjectURL(file)} alt="" className="shareImg" />
+                        <Cancel className="shreCancelImg" onClick={() => setFile(null)} />
+                    </div>
+                )}
             <form className="shareBottom" onSubmit={submitHandler}>
                 <div className="shareOptions">
                     <label htmlFor="file" className="shareOption">

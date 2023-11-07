@@ -120,3 +120,22 @@ border: 2px solid white;
     border-radius: 5px;
     object-fit: cover;
 }
+
+.rightBarFollowButton{
+    margin-top: 30px;
+    margin-bottom: 10px;
+    border:  none;
+    background-color: #1872f2;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight:500 ;
+    transition: 1s all ease;
+}
+.rightBarFollowButton:active{
+    opacity: 0.5;
+}
