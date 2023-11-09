@@ -1,29 +1,36 @@
 .login{
     width: 100vw;
     height: 100vh;
-    background-color: rgb(234, 234, 234);
+    background-color: rgb(53, 53, 53);
     display: flex;
-    align-items: center;
+    padding-top: 50px;
     justify-content: center;
 }
 
 .loginWrapper{
     width: 70%;
-    height: 70%;
+    height: 80%;
     display: flex;
+    justify-content: space-between;
+    /* border:  1px solid red; */
 }
 
-.loginLeft,.loginRight{
-    flex: 1;
+.loginLeft{
+    width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    color: gainsboro;
+}
+.loginRight{
+        width: 380px;
+        height: 450px;
 }
 
 .loginLogo{
     font-size: 50px;
     font-weight: 800;
-    color: #1775ee;
+    color: rgb(28, 212, 150);
     margin-bottom: 10px;
 }
 
@@ -32,19 +39,19 @@
 }
 
 .loginBox{
-    height: 300px;
+    height: 400px;
     padding: 20px;
-    background-color: white;
-    border-radius: 10px;
+    background-color: gainsboro;
+    color: rgb(53, 53, 53);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .loginInput{
     height: 50px;
-    border-radius: 10px;
-    border: 1px solid gray;
+    border: 2px solid rgb(53, 53, 53);
+    background-color: gainsboro;
     font-size: 18px;
     padding-left: 20px;
 }
@@ -53,14 +60,17 @@
     outline: none;
 }
 
+.loginInput::placeholder{
+    color: rgb(53, 53, 53);
+}
+
 .loginButton{
     height: 50px;
-    border-radius: 10px;
     border: none;
-    background-color: #1775ee;
+    background-color: rgb(28, 212, 150);
     color: white;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
 }
 
@@ -73,18 +83,18 @@ cursor: not-allowed;
 }
 .loginForgot{
     text-align: center;
-    color: #1775ee;
+    color: rgb(53, 53, 53);
+    font-weight: 600;
 }
 
 .loginRegisterButton{
     width: 60%;
     align-self: center;
     height: 50px;
-    border-radius: 10px;
     border: none;
-    background-color: #42b72a;
+    background-color: rgb(53, 53, 53);
     color: white;
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
 }

@@ -42,9 +42,9 @@ export default function Register(){
         <div className="sign">
             <div className="signWrapper">
                 <div className="signLeft">
-                    <h3 className="signLogo">Social Media</h3>
+                    <h3 className="signLogo">Sign Up</h3>
                     <span className="signDesc">
-                        Connect with friends and the world around you on Social Media.
+                      Where you connect with friends and the world around you on Social Media.
                     </span>
                 </div>
                 <div className="signRight">

@@ -2,6 +2,7 @@
     width: 100%;
     border-radius: 10px;
     box-shadow: 0px 0px 6px 1px rgb(193, 193, 193);
+    background-color: white;
 }
 
 .shareWrapper{
@@ -67,12 +68,14 @@ margin-left: 20px;
 .shareButton{
     border: none;
     padding: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
     font-weight: 500;
     margin-right: 30px;
     border-radius: 5px;
     cursor: pointer;
     color: white;
-    background-color: rgb(31, 144, 31);
+    background-color:  rgb(28, 212, 150);
 }
 
 .shareImgContainer{

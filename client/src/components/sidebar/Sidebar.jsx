@@ -1,6 +1,7 @@
 import "./sidebar.css"
 import {HelpOutline, RssFeed, School, WorkOutline, Event, PlayCircleFilledOutlined, Group, Chat} from "@mui/icons-material";
 import { users } from "../../dummyData.js";
+import { Link } from "react-router-dom";
 
 
 
@@ -61,6 +62,12 @@ export default function Sidebar(){
                     
                     </>
                  </ul>
+                 <div className="logoutButton">
+                    <Link to="http://localhost:3000/login">
+                    <button className="logout">Log Out</button>
+                    </Link>
+                    
+                 </div>
             </div>
         </div>
     )

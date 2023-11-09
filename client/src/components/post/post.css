@@ -3,6 +3,7 @@
     border-radius: 10px;
     margin: 30px 0;
     box-shadow: 0px 0px 6px 1px rgb(193, 193, 193);
+    background-color: white;
 }
 
 .postWrapper{
@@ -46,7 +47,7 @@
     margin-top: 20px;
     width: 100%;
     max-height: 500px;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .postBottom{
