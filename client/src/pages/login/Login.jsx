@@ -7,7 +7,7 @@ import {CircularProgress} from "@mui/material"
 export default function Login(){
     const email = useRef();
     const password = useRef();
-    const {user,dispatch, isFetching, error} = useContext(AuthContext);
+    const {dispatch, isFetching,} = useContext(AuthContext);
 
     const handleClick = (e) =>{
         e.preventDefault();

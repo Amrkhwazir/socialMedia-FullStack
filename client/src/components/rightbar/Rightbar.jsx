@@ -18,7 +18,7 @@ export default function Rightbar({ user }){
     useEffect(()=>{
         const getFriends = async () => {
             try {
-                const friendLists = await axios.get(`http://127.0.0.1:8000/profile/friends/${user?._id}`);
+                const friendLists = await axios.get(`http://127.0.0.1:8000/profile/friends/${currentUser._id}`);
                 setFriend(friendLists.data)
 
             } catch (error) {
@@ -26,7 +26,7 @@ export default function Rightbar({ user }){
             }
         } 
         getFriends();
-    }, [user]);
+    }, [currentUser]);
 
     const clickHandler = async () => {
         try {

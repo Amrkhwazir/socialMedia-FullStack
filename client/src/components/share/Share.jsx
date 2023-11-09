@@ -10,7 +10,7 @@ export default function Share(){
     const PF = process.env.REACT_APP_PUBLIC_FOLDER
     const desc = useRef();
     const [file , setFile] = useState(null);
-
+// console.log(file)
     const submitHandler = async (e) => {
         e.preventDefault();
         const newPost = {
@@ -20,22 +20,22 @@ export default function Share(){
 
         if(file){
             const data = new FormData();
-            const fileName = Date.now() + file.name
-            data.append("file", file)
-            data.append("name", fileName)
-            newPost.img = fileName
-
+            const fileName = Date.now() + file.name;
+            data.append("name", fileName);
+            data.append("file", file);
+            newPost.img = fileName;
+            // console.log(newPost);
             try {
                 await axios.post("http://127.0.0.1:8000/upload", data);
-                window.location.reload();
+                // console.log(data)
             } catch (err) {
                 console.log(err);
             }
-    
+            
         }
-        
         try {
             axios.post("http://127.0.0.1:8000/post/", newPost)
+            window.location.reload();
         } catch (error) {
             
         }
@@ -62,7 +62,7 @@ export default function Share(){
                         <span className="shareOptionText">
                         Photo or Video
                         </span>
-                        <input style={{display: "none"}} type="file" id="file" accept=".png,.jpg,.jpeg " onChange={(e) => setFile(e.target.files[0])}/>
+                        <input style={{display: "none"}} type="file" name="file" id="file" accept=".png,.jpg,.jpeg " onChange={(e) => setFile(e.target.files[0])}/>
                     </label>
                     <div className="shareOption">
                         <Label htmlColor="blue" className="shareIcon"/>

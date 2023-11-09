@@ -35,9 +35,7 @@ app.use("/images", express.static(path.join(__dirname, "public/images")))
 
 // middleware
 app.use(express.json());
-app.use(helmet({
-  crossOriginResourcePolicy: false,
-}));
+app.use(helmet());
 app.use(morgan("common"));
 
 const storage = multer.diskStorage({
@@ -45,11 +43,14 @@ const storage = multer.diskStorage({
     cb(null, "public/images");
   },
   filename: ( req, file, cb) => {
-    cb(null, file.originalname);
+    cb(null, req.body.name);
+    console.log(req.body.name, "body name")
+    console.log(req.file, "file name")
+    console.log(file.originalname, "orignal name")
   }
 });
 
-const upload = multer({storage});
+const upload = multer({storage: storage});
 
 app.post("/upload", upload.single("file"), (req,res) => {
 try {
@@ -62,7 +63,7 @@ try {
 
 app.use((req, res, next)=>{
     req.body.date = new Date()
-    console.log(req.body);
+    // console.log(req.body);
     next()
 })
 

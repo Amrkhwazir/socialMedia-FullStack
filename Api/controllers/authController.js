@@ -29,7 +29,7 @@ export const login = async(req, res) => {
         const validPasscode = bcrypt.compareSync(req.body.password, loggedUser.password);
         !validPasscode && res.status(400).json("wrong password");
 
-        res.status(200).json("User logged In");
+        res.status(200).json(loggedUser);
 
     } catch (error) {
 
